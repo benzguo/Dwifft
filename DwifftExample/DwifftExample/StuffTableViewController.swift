@@ -38,9 +38,9 @@ class StuffTableViewController: UITableViewController {
         return Array(possibleStuff[0...subsetCount])
     }
     
-    required init!(coder aDecoder: NSCoder!) {
+    required init!(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Shuffle", style: .Plain, target: self, action: "shuffle")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Shuffle", style: .Plain, target: self, action: #selector(StuffTableViewController.shuffle))
     }
     
     @objc func shuffle() {
@@ -75,7 +75,7 @@ class StuffTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) 
         cell.textLabel?.text = self.stuff[indexPath.row]
         return cell
     }
